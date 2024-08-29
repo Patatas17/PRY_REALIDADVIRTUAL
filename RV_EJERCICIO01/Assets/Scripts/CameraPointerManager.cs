@@ -39,12 +39,14 @@ public class CameraPointerManager : MonoBehaviour
 
     private void GazeSelection()
     {
-        _gazedAtObject?.SendMessage("OnPointerClickXR", null, SendMessageOptions.DontRequireReceiver);
+        _gazedAtObject?.SendMessage("OnPointerClicXR", null, SendMessageOptions.DontRequireReceiver);
         //PARA LOS MOVIMIENTOS
+        /*
         if ((bool)(_gazedAtObject?.transform.CompareTag("caja_move")))
         {
-            _gazedAtObject?.SendMessage("OnPointerClickMove", null, SendMessageOptions.DontRequireReceiver);
+            _gazedAtObject?.SendMessage("OnPointerClicMove", null, SendMessageOptions.DontRequireReceiver);
         }
+        */
 
     }
 
@@ -70,7 +72,7 @@ public class CameraPointerManager : MonoBehaviour
                 _gazedAtObject.SendMessage("OnPointerEnterXR", null, SendMessageOptions.DontRequireReceiver);
                 GazeManager.Instance.StartGazeSelection(); //Se habilita la Barra de carga
             }
-            if (hit.transform.CompareTag(interactableTag) || hit.transform.CompareTag("caja_move")) //comparamos si el objeto tiene el tag que hemos definido
+            if (hit.transform.CompareTag(interactableTag) /*|| hit.transform.CompareTag("caja_move")*/) //comparamos si el objeto tiene el tag que hemos definido
             {
                 PointerOnGaze(hit.point); //Funcion para mostrar el pointer
             }
